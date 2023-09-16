@@ -5,6 +5,10 @@ const commands = [
   {
     name: 'schedule',
     description: 'Расписание',
+  },
+  {
+    name: 'startgym',
+    description: 'Начинает ивент качалки',
   }
 ];
 

@@ -11,6 +11,7 @@ const client = new Client({
     IntentsBitField.Flags.GuildMembers,
     IntentsBitField.Flags.GuildMessages,
     IntentsBitField.Flags.MessageContent,
+    IntentsBitField.Flags.GuildScheduledEvents,
  ]
 });
 const prefix = '.';
@@ -54,6 +55,7 @@ client.on('messageCreate', async (message) => {
     const reply = await message.reply({ embeds: [scheduleembed], components:[schedulebuttons], files: [schedulepng] })
 
     // const filter = (i) => i.user.id === message.author.id;
+
     const collector = reply.createMessageComponentCollector({
         ComponentType: ComponentType.Button,
         // filter
@@ -61,27 +63,30 @@ client.on('messageCreate', async (message) => {
 
     collector.on('collect', async (interaction) => {
         await interaction.deferUpdate();
-        if (interaction.customId === 'day1') {
-            await interaction.message.edit({ embeds: [day1embed], components:[schedulebuttons], files: [day1png] });
-            return;
-        }
-        if (interaction.customId === 'day2') {
-            await interaction.message.edit({ embeds: [day2embed], components:[schedulebuttons], files: [day2png] });
-            return;
-        }
-        if (interaction.customId === 'day3') {
-            await interaction.message.edit({ embeds: [day3embed], components:[schedulebuttons], files: [day3png] });
-            return;
-        }
-        if (interaction.customId === 'day4') {
-            await interaction.message.edit({ embeds: [day4embed], components:[schedulebuttons], files: [day4png] });
-            return;
-        }
-        if (interaction.customId === 'dayc') {
-            await interaction.message.edit({ embeds: [daycembed], components:[schedulebuttons], files: [daycpng] });
-            return;
+        switch(interaction.customId){
+            case 'day1':
+                await interaction.message.edit({ embeds: [day1embed], components:[schedulebuttons], files: [day1png] });
+                return;
+            case 'day2':
+                await interaction.message.edit({ embeds: [day2embed], components:[schedulebuttons], files: [day2png] });
+                return;
+            case 'day3':
+                await interaction.message.edit({ embeds: [day3embed], components:[schedulebuttons], files: [day3png] });
+                return;
+            case 'day4':
+                await interaction.message.edit({ embeds: [day4embed], components:[schedulebuttons], files: [day4png] });
+                return;
+            case 'dayc':
+                await interaction.message.edit({ embeds: [daycembed], components:[schedulebuttons], files: [daycpng] });
+                return;
         }
     })
+})
+
+client.on('messageCreate', async (message) => {
+    if (message.author.bot) return;
+
+    if (message.content !== prefix + 'расписание') return;
 })
 
 client.on('interactionCreate', async (interaction) => {
@@ -89,72 +94,38 @@ client.on('interactionCreate', async (interaction) => {
   
     if (interaction.commandName === 'schedule') {
     const reply = await interaction.reply({ embeds: [scheduleembed], components:[schedulebuttons], files: [schedulepng] })
-
-      // const filter = (i) => i.user.id === message.author.id;
   
       const collector = reply.createMessageComponentCollector({
           ComponentType: ComponentType.Button,
-          // filter
       });
   
       collector.on('collect', async (interaction) => {
           await interaction.deferUpdate();
-          if (interaction.customId === 'day1') {
-              await interaction.message.edit({ embeds: [day1embed], components:[schedulebuttons], files: [day1png] });
-              return;
-          }
-          if (interaction.customId === 'day2') {
-              await interaction.message.edit({ embeds: [day2embed], components:[schedulebuttons], files: [day2png] });
-              return;
-          }
-          if (interaction.customId === 'day3') {
-              await interaction.message.edit({ embeds: [day3embed], components:[schedulebuttons], files: [day3png] });
-              return;
-          }
-          if (interaction.customId === 'day4') {
-              await interaction.message.edit({ embeds: [day4embed], components:[schedulebuttons], files: [day4png] });
-              return;
-          }
-          if (interaction.customId === 'dayc') {
-              await interaction.message.edit({ embeds: [daycembed], components:[schedulebuttons], files: [daycpng] });
-              return;
+          switch(interaction.customId){
+            case 'day1':
+                await interaction.message.edit({ embeds: [day1embed], components:[schedulebuttons], files: [day1png] });
+                return;
+            case 'day2':
+                await interaction.message.edit({ embeds: [day2embed], components:[schedulebuttons], files: [day2png] });
+                return;
+            case 'day3':
+                await interaction.message.edit({ embeds: [day3embed], components:[schedulebuttons], files: [day3png] });
+                return;
+            case 'day4':
+                await interaction.message.edit({ embeds: [day4embed], components:[schedulebuttons], files: [day4png] });
+                return;
+            case 'dayc':
+                await interaction.message.edit({ embeds: [daycembed], components:[schedulebuttons], files: [daycpng] });
+                return;
           }
       })
     }
-  
-    if (interaction.commandName === 'ping') {
-      return interaction.reply('Pong!');
+
+    if (interaction.commandName === 'startgym') {
+        
     }
+
   });
-    
-/* collector.on('end', (Collection) => {
-    Collection.forEach((click) => {
-        console.log(click.user.id, click.setCustomId)
-    })
-    let tempembed;
-    let tempfile;
-    if (Collection.first()?.customId === 'day1')
-    {
-        tempembed = day1embed;
-        tempfile = day1png;
-    }
-    if (Collection.first()?.customId === 'day2')
-    {
-        tempembed = day2embed;
-        tempfile = day2png;
-    }
-    if (Collection.first()?.customId === 'day3')
-    {
-        tempembed = day3embed;
-        tempfile = day3png;
-    }
-    if (Collection.first()?.customId === 'day4')
-    {
-        tempembed = day4embed;
-        tempfile = day4png;
-    }
-},
-async i => {await i.update({embeds: [tempembed], components: [schedulebuttons], files: [tempfile]})}) */
 
 client.on('messageCreate', (message) => {
     console.log(message.content);
