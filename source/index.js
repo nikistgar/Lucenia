@@ -1,6 +1,6 @@
 require('dotenv').config();
 const { AttachmentBuilder, EmbedBuilder, Client, IntentsBitField, ActionRowBuilder, ButtonBuilder, ButtonStyle, Collection, ComponentType, ButtonInteraction } = require('discord.js');
-
+//
 const client = new Client({
  intents: [
     IntentsBitField.Flags.Guilds,
