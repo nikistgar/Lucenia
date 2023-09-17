@@ -1,12 +1,17 @@
 const { AttachmentBuilder, EmbedBuilder, ButtonBuilder, ButtonStyle, ActionRowBuilder} = require('discord.js');
 
-
+const kachpng = new AttachmentBuilder('./assets/Gigachad.png')
 const schedulepng = new AttachmentBuilder('./assets/schedule.png')
 const day1png = new AttachmentBuilder('./assets/day1.png');
 const day2png = new AttachmentBuilder('./assets/day2.png');
 const day3png = new AttachmentBuilder('./assets/day3.png');
 const day4png = new AttachmentBuilder('./assets/day4.png');
 const daycpng = new AttachmentBuilder('./assets/dayc.png');
+
+const kachembed = new EmbedBuilder()
+    .setDescription('Сегодня качаемся ребята')
+	.setTitle('Качалка')
+	.setImage('attachment://Gigachad.png');
 
 const scheduleembed = new EmbedBuilder()
 	.setTitle('Schedule')
@@ -63,4 +68,4 @@ const schedulebuttons = new ActionRowBuilder()
 module.exports = { schedulepng, day1png, day2png, day3png, day4png, daycpng,
                    scheduleembed, day1embed, day2embed, day3embed, day4embed,
                    daycembed, day1button, day2button, day3button, day4button, daycbutton,
-                   schedulebuttons};
+                   schedulebuttons, kachembed, kachpng};

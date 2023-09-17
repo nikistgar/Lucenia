@@ -4,7 +4,7 @@ const { AttachmentBuilder, EmbedBuilder, Client, IntentsBitField, ActionRowBuild
 const { schedulepng, day1png, day2png, day3png, day4png, daycpng,
         scheduleembed, day1embed, day2embed, day3embed, day4embed,
         daycembed, day1button, day2button, day3button, day4button, daycbutton,
-        schedulebuttons} = require('./messages')
+        schedulebuttons, kachembed, kachpng} = require('./messages')
 
 const client = new Client({
  intents: [
@@ -19,6 +19,7 @@ const prefix = '.';
 
 client.on('ready', (c) =>{
     console.log(`${c.user.tag} is online`);
+    client.channels.cache.get('1025485510627561523').send({ embeds: [kachembed], files: [kachpng] });
 });
 
 /*client.on('messageCreate', async (message) => {
@@ -124,34 +125,38 @@ client.on('interactionCreate', async (interaction) => {
     }
 
     if (interaction.commandName === 'startgym') {
-        /*const eventmanager = new GuildScheduledEventManager(process.env.GUILD_ID)
+        /*console.log('wtf1');
+
+        const event_manager = new GuildScheduledEventManager(process.env.GUILD_ID);
+
+        console.log('wtf2');
 
         await event_manager.create({
             name: 'Качалка',
-            scheduledStartTime: new Date(1694910999),
+            scheduledStartTime: new Date(1894910999),
             privacyLevel: GuildScheduledEventPrivacyLevel.GuildOnly,
             entityType: GuildScheduledEventEntityType.Voice,
             description: 'This is a test Scheduled Event',
-            channel: '1152908662545862696',
+            channel: '1025479339900403865',
             image: null,
             reason: 'Testing with creating a Scheduled Event',
     })*/
   };
-})
+});
 client.on('messageCreate', (message) => {
     console.log(message.content);
 });
 
-console.log('Before job instantiation');
-const job = new CronJob('0 0 2/2 * *', function() {
+console.log('Cron detected');
+const job = new CronJob('0 0 0 2/2 * *', function() {
 	const d = new Date() + ". ";
 	console.log(d);
-    client.channels.cache.get('1152908662545862696').send(d + '\nКачалка today');
+    client.channels.cache.get('1025479339900403864').send({ embeds: [kachembed], files: [kachpng] });
 },
     null,
     true,
     "Europe/Moscow");
-console.log('After job instantiation');
+console.log('Cron started');
 job.start();
 
 client.login(process.env.TOKEN);
