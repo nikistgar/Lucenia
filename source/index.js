@@ -1,4 +1,5 @@
 require('dotenv').config();
+const CronJob = require('cron').CronJob;
 const { AttachmentBuilder, EmbedBuilder, Client, IntentsBitField, ActionRowBuilder, ButtonBuilder, ButtonStyle, Collection, ComponentType, ButtonInteraction, GuildScheduledEvent, GuildScheduledEventManager } = require('discord.js');
 const { schedulepng, day1png, day2png, day3png, day4png, daycpng,
         scheduleembed, day1embed, day2embed, day3embed, day4embed,
@@ -21,7 +22,7 @@ client.on('ready', (c) =>{
     // client.channels.cache.get('1059499932404433030').send({ embeds: [scheduleembed], components:[schedulebuttons], files: [schedulepng] });
 });
 
-client.on('messageCreate', async (message) => {
+/*client.on('messageCreate', async (message) => {
     if (message.author.id === '418792454922305557')
     {
         if (message.content.includes('размут'))
@@ -45,7 +46,7 @@ client.on('messageCreate', async (message) => {
             return;
         }
     }
-})
+})*/
 
 client.on('messageCreate', async (message) => {
     if (message.author.bot) return;
@@ -105,6 +106,8 @@ client.on('interactionCreate', async (interaction) => {
             case 'day1':
                 await interaction.message.edit({ embeds: [day1embed], components:[schedulebuttons], files: [day1png] });
                 return;
+                /*await interaction.message.edit({ embeds: [interaction.customId + 'embed'], components:[schedulebuttons], files: [interaction.customId + 'png'] });
+                return;*/
             case 'day2':
                 await interaction.message.edit({ embeds: [day2embed], components:[schedulebuttons], files: [day2png] });
                 return;
@@ -125,7 +128,7 @@ client.on('interactionCreate', async (interaction) => {
         /*const eventmanager = new GuildScheduledEventManager(process.env.GUILD_ID)
 
         await event_manager.create({
-            name: 'Test Event',
+            name: 'Качалка',
             scheduledStartTime: new Date(1694910999),
             privacyLevel: GuildScheduledEventPrivacyLevel.GuildOnly,
             entityType: GuildScheduledEventEntityType.Voice,
@@ -138,13 +141,18 @@ client.on('interactionCreate', async (interaction) => {
 })
 client.on('messageCreate', (message) => {
     console.log(message.content);
-    if (message.author.bot) {
-        return;
-    }
-    if (message.content === 'Привет')
-    {
-        message.reply();
-    }
 });
+
+console.log('Before job instantiation');
+const job = new CronJob('0 0 2/2 * *', function() {
+	const d = new Date() + ". ";
+	console.log(d);
+    //client.channels.cache.get('1152908662545862696').send(d);
+},
+    null,
+    true,
+    "Europe/Moscow");
+console.log('After job instantiation');
+job.start();
 
 client.login(process.env.TOKEN);
