@@ -1,5 +1,5 @@
 require('dotenv').config();
-const { AttachmentBuilder, EmbedBuilder, Client, IntentsBitField, ActionRowBuilder, ButtonBuilder, ButtonStyle, Collection, ComponentType, ButtonInteraction } = require('discord.js');
+const { AttachmentBuilder, EmbedBuilder, Client, IntentsBitField, ActionRowBuilder, ButtonBuilder, ButtonStyle, Collection, ComponentType, ButtonInteraction, GuildScheduledEvent, GuildScheduledEventManager } = require('discord.js');
 const { schedulepng, day1png, day2png, day3png, day4png, daycpng,
         scheduleembed, day1embed, day2embed, day3embed, day4embed,
         daycembed, day1button, day2button, day3button, day4button, daycbutton,
@@ -122,11 +122,20 @@ client.on('interactionCreate', async (interaction) => {
     }
 
     if (interaction.commandName === 'startgym') {
-        
-    }
+        /*const eventmanager = new GuildScheduledEventManager(process.env.GUILD_ID)
 
-  });
-
+        await event_manager.create({
+            name: 'Test Event',
+            scheduledStartTime: new Date(1694910999),
+            privacyLevel: GuildScheduledEventPrivacyLevel.GuildOnly,
+            entityType: GuildScheduledEventEntityType.Voice,
+            description: 'This is a test Scheduled Event',
+            channel: '1025479339900403865',
+            image: null,
+            reason: 'Testing with creating a Scheduled Event',
+    })*/
+  };
+})
 client.on('messageCreate', (message) => {
     console.log(message.content);
     if (message.author.bot) {
