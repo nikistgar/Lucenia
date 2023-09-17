@@ -19,7 +19,6 @@ const prefix = '.';
 
 client.on('ready', (c) =>{
     console.log(`${c.user.tag} is online`);
-    // client.channels.cache.get('1059499932404433030').send({ embeds: [scheduleembed], components:[schedulebuttons], files: [schedulepng] });
 });
 
 /*client.on('messageCreate', async (message) => {
@@ -133,7 +132,7 @@ client.on('interactionCreate', async (interaction) => {
             privacyLevel: GuildScheduledEventPrivacyLevel.GuildOnly,
             entityType: GuildScheduledEventEntityType.Voice,
             description: 'This is a test Scheduled Event',
-            channel: '1025479339900403865',
+            channel: '1152908662545862696',
             image: null,
             reason: 'Testing with creating a Scheduled Event',
     })*/
@@ -147,7 +146,7 @@ console.log('Before job instantiation');
 const job = new CronJob('0 0 2/2 * *', function() {
 	const d = new Date() + ". ";
 	console.log(d);
-    //client.channels.cache.get('1152908662545862696').send(d);
+    client.channels.cache.get('1152908662545862696').send(d + '\nКачалка today');
 },
     null,
     true,
