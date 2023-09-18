@@ -1,6 +1,6 @@
 {
-  "name": "gym-bot",
-  "version": "1.0.0",
+  "name": "Arnet",
+  "version": "1.0.1",
   "description": "",
   "main": "source/index.js",
   "scripts": {

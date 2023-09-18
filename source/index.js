@@ -4,7 +4,8 @@ const { AttachmentBuilder, EmbedBuilder, Client, IntentsBitField, ActionRowBuild
 const { schedulepng, day1png, day2png, day3png, day4png, daycpng,
         scheduleembed, day1embed, day2embed, day3embed, day4embed,
         daycembed, day1button, day2button, day3button, day4button, daycbutton,
-        schedulebuttons, kachembed, kachpng} = require('./messages')
+        schedulebuttons, kachembed, kachpng, gymschedule, gymschedule2} = require('./messages');
+const { schedule_command } = require('./commands');
 
 const client = new Client({
  intents: [
@@ -19,7 +20,7 @@ const prefix = '.';
 
 client.on('ready', (c) =>{
     console.log(`${c.user.tag} is online`);
-    client.channels.cache.get('1025485510627561523').send({ embeds: [kachembed], files: [kachpng] });
+    client.channels.cache.get('1025485510627561523').send(`${c.user.tag} is online`)
 });
 
 /*client.on('messageCreate', async (message) => {
@@ -66,19 +67,22 @@ client.on('messageCreate', async (message) => {
         await interaction.deferUpdate();
         switch(interaction.customId){
             case 'day1':
-                await interaction.message.edit({ embeds: [day1embed], components:[schedulebuttons], files: [day1png] });
+                await interaction.message.edit({ embeds: [day1embed], components:[gymschedule, gymschedule2], files: [day1png] });
                 return;
             case 'day2':
-                await interaction.message.edit({ embeds: [day2embed], components:[schedulebuttons], files: [day2png] });
+                await interaction.message.edit({ embeds: [day2embed], components:[gymschedule, gymschedule2], files: [day2png] });
                 return;
             case 'day3':
-                await interaction.message.edit({ embeds: [day3embed], components:[schedulebuttons], files: [day3png] });
+                await interaction.message.edit({ embeds: [day3embed], components:[gymschedule, gymschedule2], files: [day3png] });
                 return;
             case 'day4':
-                await interaction.message.edit({ embeds: [day4embed], components:[schedulebuttons], files: [day4png] });
+                await interaction.message.edit({ embeds: [day4embed], components:[gymschedule, gymschedule2], files: [day4png] });
                 return;
             case 'dayc':
-                await interaction.message.edit({ embeds: [daycembed], components:[schedulebuttons], files: [daycpng] });
+                await interaction.message.edit({ embeds: [daycembed], components:[gymschedule, gymschedule2], files: [daycpng] });
+                return;
+            case 'schedule':
+                await interaction.message.edit({ embeds: [scheduleembed], components:[gymschedule, gymschedule2], files: [schedulepng] });
                 return;
         }
     })
@@ -94,34 +98,7 @@ client.on('interactionCreate', async (interaction) => {
     if (!interaction.isChatInputCommand()) return;
   
     if (interaction.commandName === 'schedule') {
-    const reply = await interaction.reply({ embeds: [scheduleembed], components:[schedulebuttons], files: [schedulepng] })
-  
-      const collector = reply.createMessageComponentCollector({
-          ComponentType: ComponentType.Button,
-      });
-  
-      collector.on('collect', async (interaction) => {
-          await interaction.deferUpdate();
-          switch(interaction.customId){
-            case 'day1':
-                await interaction.message.edit({ embeds: [day1embed], components:[schedulebuttons], files: [day1png] });
-                return;
-                /*await interaction.message.edit({ embeds: [interaction.customId + 'embed'], components:[schedulebuttons], files: [interaction.customId + 'png'] });
-                return;*/
-            case 'day2':
-                await interaction.message.edit({ embeds: [day2embed], components:[schedulebuttons], files: [day2png] });
-                return;
-            case 'day3':
-                await interaction.message.edit({ embeds: [day3embed], components:[schedulebuttons], files: [day3png] });
-                return;
-            case 'day4':
-                await interaction.message.edit({ embeds: [day4embed], components:[schedulebuttons], files: [day4png] });
-                return;
-            case 'dayc':
-                await interaction.message.edit({ embeds: [daycembed], components:[schedulebuttons], files: [daycpng] });
-                return;
-          }
-      })
+        schedule_command(interaction);
     }
 
     if (interaction.commandName === 'startgym') {

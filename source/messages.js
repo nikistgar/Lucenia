@@ -1,12 +1,12 @@
 const { AttachmentBuilder, EmbedBuilder, ButtonBuilder, ButtonStyle, ActionRowBuilder} = require('discord.js');
 
-const kachpng = new AttachmentBuilder('./assets/Gigachad.png')
-const schedulepng = new AttachmentBuilder('./assets/schedule.png')
-const day1png = new AttachmentBuilder('./assets/day1.png');
-const day2png = new AttachmentBuilder('./assets/day2.png');
-const day3png = new AttachmentBuilder('./assets/day3.png');
-const day4png = new AttachmentBuilder('./assets/day4.png');
-const daycpng = new AttachmentBuilder('./assets/dayc.png');
+const kachpng = new AttachmentBuilder('./assets/gym/Gigachad.png')
+const schedulepng = new AttachmentBuilder('./assets/gym/schedule.png')
+const day1png = new AttachmentBuilder('./assets/gym/day1.png');
+const day2png = new AttachmentBuilder('./assets/gym/day2.png');
+const day3png = new AttachmentBuilder('./assets/gym/day3.png');
+const day4png = new AttachmentBuilder('./assets/gym/day4.png');
+const daycpng = new AttachmentBuilder('./assets/gym/dayc.png');
 
 const kachembed = new EmbedBuilder()
     .setDescription('Сегодня качаемся ребята')
@@ -62,10 +62,18 @@ const daycbutton = new ButtonBuilder()
     .setLabel('Day C')
     .setStyle(ButtonStyle.Primary);
 
-const schedulebuttons = new ActionRowBuilder()
+const schedulebutton = new ButtonBuilder()
+    .setCustomId('schedule')
+    .setLabel('Schedule')
+    .setStyle(ButtonStyle.Success);
+
+const gymschedule = new ActionRowBuilder()
     .addComponents(day1button, day2button, day3button, day4button, daycbutton);
+
+const gymschedule2 = new ActionRowBuilder()
+    .addComponents(schedulebutton);
 
 module.exports = { schedulepng, day1png, day2png, day3png, day4png, daycpng,
                    scheduleembed, day1embed, day2embed, day3embed, day4embed,
                    daycembed, day1button, day2button, day3button, day4button, daycbutton,
-                   schedulebuttons, kachembed, kachpng};
+                   gymschedule, gymschedule2, kachembed, kachpng, schedulebutton };
