@@ -1,10 +1,7 @@
 require('dotenv').config();
 const CronJob = require('cron').CronJob;
-const { AttachmentBuilder, EmbedBuilder, Client, IntentsBitField, ActionRowBuilder, ButtonBuilder, ButtonStyle, Collection, ComponentType, ButtonInteraction, GuildScheduledEvent, GuildScheduledEventManager } = require('discord.js');
-const { schedulepng, day1png, day2png, day3png, day4png, daycpng,
-        scheduleembed, day1embed, day2embed, day3embed, day4embed,
-        daycembed, day1button, day2button, day3button, day4button, daycbutton,
-        schedulebuttons, kachembed, kachpng, gymschedule, gymschedule2} = require('./messages');
+const { Client, IntentsBitField } = require('discord.js');
+const { kachembed, kachpng} = require('./messages');
 const { schedule_command } = require('./commands');
 
 const client = new Client({
@@ -52,40 +49,11 @@ client.on('ready', (c) =>{
 client.on('messageCreate', async (message) => {
     if (message.author.bot) return;
 
-    if (message.content !== prefix + 'расписание') return;
-
-    const reply = await message.reply({ embeds: [scheduleembed], components:[schedulebuttons], files: [schedulepng] })
-
+    if (message.content == prefix + 'расписание') {
+        interaction = message;
+        schedule_command(interaction);
+    }
     // const filter = (i) => i.user.id === message.author.id;
-
-    const collector = reply.createMessageComponentCollector({
-        ComponentType: ComponentType.Button,
-        // filter
-    });
-
-    collector.on('collect', async (interaction) => {
-        await interaction.deferUpdate();
-        switch(interaction.customId){
-            case 'day1':
-                await interaction.message.edit({ embeds: [day1embed], components:[gymschedule, gymschedule2], files: [day1png] });
-                return;
-            case 'day2':
-                await interaction.message.edit({ embeds: [day2embed], components:[gymschedule, gymschedule2], files: [day2png] });
-                return;
-            case 'day3':
-                await interaction.message.edit({ embeds: [day3embed], components:[gymschedule, gymschedule2], files: [day3png] });
-                return;
-            case 'day4':
-                await interaction.message.edit({ embeds: [day4embed], components:[gymschedule, gymschedule2], files: [day4png] });
-                return;
-            case 'dayc':
-                await interaction.message.edit({ embeds: [daycembed], components:[gymschedule, gymschedule2], files: [daycpng] });
-                return;
-            case 'schedule':
-                await interaction.message.edit({ embeds: [scheduleembed], components:[gymschedule, gymschedule2], files: [schedulepng] });
-                return;
-        }
-    })
 })
 
 client.on('messageCreate', async (message) => {
