@@ -1,6 +1,6 @@
 require('dotenv').config();
 const CronJob = require('cron').CronJob;
-const { Client, IntentsBitField } = require('discord.js');
+const { Client, IntentsBitField,  } = require('discord.js');
 const { kachembed, kachpng} = require('./messages');
 const { schedule_command } = require('./commands');
 
@@ -53,13 +53,15 @@ client.on('messageCreate', async (message) => {
         interaction = message;
         schedule_command(interaction);
     }
+
+    /*if (message.content == prefix + 'send') {
+        if (message.author.id == '422829728681033739')
+        {
+            const messagecont = message.content;
+            client.channels.cache.get('1153261980656865340').send(messagecont);
+        }
+    }*/
     // const filter = (i) => i.user.id === message.author.id;
-})
-
-client.on('messageCreate', async (message) => {
-    if (message.author.bot) return;
-
-    if (message.content !== prefix + 'расписание') return;
 })
 
 client.on('interactionCreate', async (interaction) => {
@@ -93,7 +95,7 @@ client.on('messageCreate', (message) => {
 });
 
 console.log('Cron detected');
-const job = new CronJob('0 0 0 2/2 * *', function() {
+const job = new CronJob('0 0 0 2/2 * *', function(cron1) {
 	const d = new Date() + ". ";
 	console.log(d);
     client.channels.cache.get('1025479339900403864').send({ embeds: [kachembed], files: [kachpng] });
@@ -101,7 +103,23 @@ const job = new CronJob('0 0 0 2/2 * *', function() {
     null,
     true,
     "Europe/Moscow");
+
+
+/*const job2 = new CronJob('* * 0/1 * * *', async function(cron2) {
+        const d = new Date() + ". ";
+        console.log(d);
+        
+        
+
+        await client.channels.cache.get('1153261980656865340').messages.fetch('1153353857770999841')
+        .then(message =>{message.edit({})});
+    },
+        null,
+        true,
+        "Europe/Moscow");  */  
+
 console.log('Cron started');
 job.start();
+//job2.start();
 
 client.login(process.env.TOKEN);
