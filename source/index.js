@@ -3,6 +3,7 @@ const CronJob = require('cron').CronJob;
 const { Client, IntentsBitField,  } = require('discord.js');
 const { kachembed, kachpng} = require('./messages');
 const { schedule_command } = require('./commands');
+const { primarycronstart } = require('./cron-times');
 
 const client = new Client({
  intents: [
@@ -17,7 +18,8 @@ const prefix = '.';
 
 client.on('ready', (c) =>{
     console.log(`${c.user.tag} is online`);
-    client.channels.cache.get('1025485510627561523').send(`${c.user.tag} is online`)
+    //client.channels.cache.get('1025485510627561523').send(`${c.user.tag} is online`)
+    primarycronstart(client);
 });
 
 /*client.on('messageCreate', async (message) => {
@@ -91,35 +93,14 @@ client.on('interactionCreate', async (interaction) => {
   };
 });
 client.on('messageCreate', (message) => {
-    console.log(message.content);
+    if (message.author.bot)
+    {
+        console.log('BOT - ' + message.content)
+    }
+    else
+    {
+        console.log(message.content);
+    }
 });
-
-console.log('Cron detected');
-const job = new CronJob('0 0 0 2/2 * *', function(cron1) {
-	const d = new Date() + ". ";
-	console.log(d);
-    client.channels.cache.get('1025479339900403864').send({ embeds: [kachembed], files: [kachpng] });
-},
-    null,
-    true,
-    "Europe/Moscow");
-
-
-/*const job2 = new CronJob('* * 0/1 * * *', async function(cron2) {
-        const d = new Date() + ". ";
-        console.log(d);
-        
-        
-
-        await client.channels.cache.get('1153261980656865340').messages.fetch('1153353857770999841')
-        .then(message =>{message.edit({})});
-    },
-        null,
-        true,
-        "Europe/Moscow");  */  
-
-console.log('Cron started');
-job.start();
-//job2.start();
 
 client.login(process.env.TOKEN);

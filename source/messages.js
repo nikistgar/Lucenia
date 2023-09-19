@@ -8,6 +8,12 @@ const day3png = new AttachmentBuilder('./assets/gym/day3.png');
 const day4png = new AttachmentBuilder('./assets/gym/day4.png');
 const daycpng = new AttachmentBuilder('./assets/gym/dayc.png');
 
+const mondaypng = new AttachmentBuilder('./assets/school/monday.png')
+const tuesdaypng = new AttachmentBuilder('./assets/school/tuesday.png')
+const wednesdaypng = new AttachmentBuilder('./assets/school/wednesday.png')
+const thursdaypng = new AttachmentBuilder('./assets/school/thursday.png')
+const fridaypng = new AttachmentBuilder('./assets/school/friday.png')
+
 const kachembed = new EmbedBuilder()
     .setDescription('Сегодня качаемся ребята')
 	.setTitle('Качалка')
@@ -36,6 +42,26 @@ const day4embed = new EmbedBuilder()
 const daycembed = new EmbedBuilder()
 	.setTitle('Day C')
 	.setImage('attachment://dayc.png');
+
+const mondayembed = new EmbedBuilder()
+	.setTitle('Понедельник')
+	.setImage('attachment://monday.png');
+
+const tuesdayembed = new EmbedBuilder()
+	.setTitle('Вторник')
+	.setImage('attachment://tuesday.png');
+
+const wednesdayembed = new EmbedBuilder()
+	.setTitle('Среда')
+	.setImage('attachment://wednesday.png');
+
+const thursdayembed = new EmbedBuilder()
+	.setTitle('Четверг')
+	.setImage('attachment://thursday.png');
+
+const fridayembed = new EmbedBuilder()
+	.setTitle('Пятница')
+	.setImage('attachment://friday.png');
 
 const day1button = new ButtonBuilder()
     .setCustomId('day1')
@@ -76,4 +102,6 @@ const gymschedule2 = new ActionRowBuilder()
 module.exports = { schedulepng, day1png, day2png, day3png, day4png, daycpng,
                    scheduleembed, day1embed, day2embed, day3embed, day4embed,
                    daycembed, day1button, day2button, day3button, day4button, daycbutton,
-                   gymschedule, gymschedule2, kachembed, kachpng, schedulebutton };
+                   gymschedule, gymschedule2, kachembed, kachpng, schedulebutton,
+                   mondayembed, mondaypng, tuesdayembed, tuesdaypng, wednesdayembed,
+                   wednesdaypng, thursdayembed, thursdaypng, fridayembed, fridaypng };
