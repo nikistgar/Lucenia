@@ -1,7 +1,9 @@
 require('dotenv').config();
-const { Client, IntentsBitField,  } = require('discord.js');
-const { schedule_command } = require('./commands');
+const { Client, IntentsBitField, Collection, SlashCommandBuilder } = require('discord.js');
+//const { schedule_command } = require('./commands');
 const { primarycronstart } = require('./cron-times');
+const { RegisterClientCommands } = require('./register-commands')
+
 
 const client = new Client({
  intents: [
@@ -14,9 +16,12 @@ const client = new Client({
 });
 const prefix = '.';
 
+client.commands = new Collection()
+
 client.on('ready', (c) =>{
     console.log(`${c.user.tag} is online`);
     primarycronstart(client);
+    RegisterClientCommands(client);
 });
 
 /*client.on('messageCreate', async (message) => {
@@ -61,7 +66,7 @@ client.on('messageCreate', async (message) => {
     }
 })
 
-client.on('interactionCreate', async (interaction) => {
+/*client.on('interactionCreate', async (interaction) => {
     if (!interaction.isChatInputCommand()) return;
   
     switch (interaction.commandName) {
@@ -83,10 +88,10 @@ client.on('interactionCreate', async (interaction) => {
             channel: '1025479339900403865',
             image: null,
             reason: 'Testing with creating a Scheduled Event',
-    })*/
+    })
     }
   }
-);
+);*/
 client.on('messageCreate', (message) => {
     if (message.author.bot)
     {
