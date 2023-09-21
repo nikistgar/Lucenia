@@ -6,10 +6,10 @@ const commands = [
     name: 'schedule',
     description: 'Расписание',
   },
-  {
+  /*{
     name: 'startgym',
     description: 'Начинает ивент качалки',
-  },
+  },*/
 ];
 
 const rest = new REST({ version: '10' }).setToken(process.env.TOKEN);

@@ -1,7 +1,5 @@
 require('dotenv').config();
-const CronJob = require('cron').CronJob;
 const { Client, IntentsBitField,  } = require('discord.js');
-const { kachembed, kachpng} = require('./messages');
 const { schedule_command } = require('./commands');
 const { primarycronstart } = require('./cron-times');
 
@@ -18,7 +16,6 @@ const prefix = '.';
 
 client.on('ready', (c) =>{
     console.log(`${c.user.tag} is online`);
-    //client.channels.cache.get('1025485510627561523').send(`${c.user.tag} is online`)
     primarycronstart(client);
 });
 
@@ -51,30 +48,27 @@ client.on('ready', (c) =>{
 client.on('messageCreate', async (message) => {
     if (message.author.bot) return;
 
-    if (message.content == prefix + 'расписание') {
-        interaction = message;
-        schedule_command(interaction);
-    }
-
-    /*if (message.content == prefix + 'send') {
-        if (message.author.id == '422829728681033739')
+    switch(message.content) {
+        case prefix + 'расписание':
+            interaction = message;
+            schedule_command(interaction);
+        /*case prefix + 'send':
+            if (message.author.id == '422829728681033739')
         {
             const messagecont = message.content;
             client.channels.cache.get('1153261980656865340').send(messagecont);
-        }
-    }*/
-    // const filter = (i) => i.user.id === message.author.id;
+        }*/
+    }
 })
 
 client.on('interactionCreate', async (interaction) => {
     if (!interaction.isChatInputCommand()) return;
   
-    if (interaction.commandName === 'schedule') {
-        schedule_command(interaction);
-    }
-
-    if (interaction.commandName === 'startgym') {
-        /*console.log('wtf1');
+    switch (interaction.commandName) {
+        case 'schedule':
+            schedule_command(interaction);
+        case 'startgym':
+            /*console.log('wtf1');
 
         const event_manager = new GuildScheduledEventManager(process.env.GUILD_ID);
 
@@ -90,8 +84,9 @@ client.on('interactionCreate', async (interaction) => {
             image: null,
             reason: 'Testing with creating a Scheduled Event',
     })*/
-  };
-});
+    }
+  }
+);
 client.on('messageCreate', (message) => {
     if (message.author.bot)
     {

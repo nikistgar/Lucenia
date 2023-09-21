@@ -8,11 +8,11 @@ const day3png = new AttachmentBuilder('./assets/gym/day3.png');
 const day4png = new AttachmentBuilder('./assets/gym/day4.png');
 const daycpng = new AttachmentBuilder('./assets/gym/dayc.png');
 
-const mondaypng = new AttachmentBuilder('./assets/school/monday.png')
-const tuesdaypng = new AttachmentBuilder('./assets/school/tuesday.png')
-const wednesdaypng = new AttachmentBuilder('./assets/school/wednesday.png')
-const thursdaypng = new AttachmentBuilder('./assets/school/thursday.png')
-const fridaypng = new AttachmentBuilder('./assets/school/friday.png')
+const mondaypng = new AttachmentBuilder('./assets/sc/monday.png')
+const tuesdaypng = new AttachmentBuilder('./assets/sc/tuesday.png')
+const wednesdaypng = new AttachmentBuilder('./assets/sc/wednesday.png')
+const thursdaypng = new AttachmentBuilder('./assets/sc/thursday.png')
+const fridaypng = new AttachmentBuilder('./assets/sc/friday.png')
 
 const kachembed = new EmbedBuilder()
     .setDescription('Сегодня качаемся ребята')
