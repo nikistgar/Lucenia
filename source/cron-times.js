@@ -10,7 +10,7 @@ async function primarycronstart (client)
     console.log('Cron detected');
     const monday = new CronJob ('0 0 0/1 * * 1', async function(monday) {
         await client.channels.cache.get(process.env.SC_SCHEDULE_CHANNEL).messages.fetch(process.env.SC_SCHEDULE_MESSAGE)
-        .then(message =>{message.edit({ content: '',embeds: [mondayembed], files: [mondaypng] })});
+        .then(message =>{message.edit({ embeds: [mondayembed], files: [mondaypng] })});
     },
         null,
         true,
@@ -19,7 +19,7 @@ async function primarycronstart (client)
 
     const tuesday = new CronJob ('0 0 0/1 * * 2', async function(tuesday) {
         await client.channels.cache.get(process.env.SC_SCHEDULE_CHANNEL).messages.fetch(process.env.SC_SCHEDULE_MESSAGE)
-        .then(message =>{message.edit({ content: '',embeds: [tuesdayembed], files: [tuesdaypng] })});
+        .then(message =>{message.edit({ embeds: [tuesdayembed], files: [tuesdaypng] })});
     },
         null,
         true,
@@ -27,7 +27,7 @@ async function primarycronstart (client)
 
     const wednesday = new CronJob ('0 0 0/1 * * 3', async function(wednesday) {
         await client.channels.cache.get(process.env.SC_SCHEDULE_CHANNEL).messages.fetch(process.env.SC_SCHEDULE_MESSAGE)
-        .then(message =>{message.edit({ content: '',embeds: [wednesdayembed], files: [wednesdaypng] })});
+        .then(message =>{message.edit({ embeds: [wednesdayembed], files: [wednesdaypng] })});
     },
         null,
         true,
@@ -35,7 +35,7 @@ async function primarycronstart (client)
 
     const thursday = new CronJob ('0 0 0/1 * * 4', async function(thursday) {
         await client.channels.cache.get(process.env.SC_SCHEDULE_CHANNEL).messages.fetch(process.env.SC_SCHEDULE_MESSAGE)
-        .then(message =>{message.edit({ content: '',embeds: [thursdayembed], files: [thursdaypng] })});
+        .then(message =>{message.edit({ embeds: [thursdayembed], files: [thursdaypng] })});
     },
         null,
         true,
@@ -43,7 +43,7 @@ async function primarycronstart (client)
 
     const friday = new CronJob ('0 0 0/1 * * 5', async function(friday) {
         await client.channels.cache.get(process.env.SC_SCHEDULE_CHANNEL).messages.fetch(process.env.SC_SCHEDULE_MESSAGE)
-        .then(message =>{message.edit({ content: '',embeds: [fridayembed], files: [fridaypng] })});
+        .then(message =>{message.edit({ embeds: [fridayembed], files: [fridaypng] })});
     },
         null,
         true,
