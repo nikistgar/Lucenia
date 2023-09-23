@@ -7,7 +7,7 @@ module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('schedule')
 		.setDescription('Расписание'),
-	async execute(interaction, exports) {
+	async execute(interaction) {
 		const reply = await interaction.reply({ embeds: [scheduleembed], components:[gymschedule, gymschedule2], files: [schedulepng] })
   
       const collector = reply.createMessageComponentCollector({

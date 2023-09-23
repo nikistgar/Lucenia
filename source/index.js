@@ -3,7 +3,6 @@ const { Client, IntentsBitField, Collection, SlashCommandBuilder } = require('di
 const { primarycronstart } = require('./cron-times');
 const { RegisterClientCommands } = require('./register-commands')
 
-
 const client = new Client({
  intents: [
     IntentsBitField.Flags.Guilds,
@@ -40,7 +39,7 @@ client.on('messageCreate', (message) => {
     }
     else
     {
-        console.log(message.content);
+        console.log(message.author.displayName + ': ' + message.content);
     }
 });
 
