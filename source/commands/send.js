@@ -16,16 +16,10 @@ module.exports = {
                 .setRequired(true))
         .setDefaultMemberPermissions(PermissionFlagsBits.Administrator)
 		.setDMPermission(false),
-	async execute(interaction, client, message, send, channels, deferUpdate, ComponentType) {
+	async execute(interaction, exports, client) {  
             const channel = await interaction.options.getChannel('channel');
             const messagecon = await interaction.options.getString('message');
-
-            await channel.send(messagecon);
-
-            client.on("interactionCreate", async (i) => {
-
-                return i.deferUpdate()
-            }
-        )
+            await channel.send(messagecon).then(message => {return 1});
+            await interaction?.reply({content: `Message sent in ${channel}!`, ephemeral: true}).catch(()=>{});
     }
 }

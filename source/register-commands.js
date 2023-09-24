@@ -35,7 +35,7 @@ async function RegisterClientCommands(client) {
 		if (!command) return
 		
 		try {
-			await command.execute(interaction, exports)
+			await command.execute(interaction, exports, client)
 		} catch (error) {
 			console.error(error)
 			var errorContent = { content: `Тут скорее всего ошибка\`\`\`js\n${error.stack}\`\`\``, ephemeral: true }
