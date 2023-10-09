@@ -19,7 +19,7 @@ module.exports = {
 	async execute(interaction, exports, client) {  
             const channel = await interaction.options.getChannel('channel');
             const messagecon = await interaction.options.getString('message');
-            await channel.send(messagecon).then(message => {return 1});
+            await channel.send(messagecon);
             await interaction?.reply({content: `Message sent in ${channel}!`, ephemeral: true}).catch(()=>{});
     }
 }
