@@ -12,7 +12,6 @@ const client = new Client({
     IntentsBitField.Flags.GuildScheduledEvents,
  ]
 });
-const prefix = '.';
 
 client.commands = new Collection()
 
@@ -21,16 +20,6 @@ client.on('ready', (c) =>{
     primarycronstart(client);
     RegisterClientCommands(client);
 });
-
-client.on('messageCreate', async (message) => {
-    if (message.author.bot) return;
-
-    switch(message.content) {
-        case prefix + 'расписание':
-            interaction = message;
-            schedule_command(interaction);
-    }
-})
 
 client.on('messageCreate', (message) => {
     if (message.author.bot)
