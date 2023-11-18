@@ -16,15 +16,20 @@ const client = new Client({
 client.commands = new Collection()
 
 client.on('ready', (c) =>{
-    console.log(`${c.user.tag} is online`);
     primarycronstart(client);
     RegisterClientCommands(client);
+    console.log(`${c.user.tag} is online`);
+});
+
+client.on('guildMemberAdd', member => {
+    member.setRoles([process.env.DEFAULT_ROLE]);
+    console.log(`${member.displayName} setted to default role`)
 });
 
 client.on('messageCreate', (message) => {
     if (message.author.bot)
     {
-        console.log('BOT - ' + message.content)
+        console.log(`BOT.` + message.author.displayName + ` - ` + message.content)
     }
     else
     {
