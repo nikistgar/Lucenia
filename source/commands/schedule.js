@@ -25,10 +25,8 @@ module.exports = {
 		.setDMPermission(false),
     async execute(interaction, exports, client) {  
         const day = await interaction.options.getString('day');
-        const embed = day + "embed";
-        const png = day + "png";
         await client.channels.cache.get(process.env.SC_SCHEDULE_CHANNEL).messages.fetch(process.env.SC_SCHEDULE_MESSAGE)
-        .then(message =>{message.edit({ embeds: [eval(embed)], files: [eval(png)] })});
+        .then(message =>{message.edit({ embeds: [eval(day + "embed")], files: [eval(day + "png")] })});
         await interaction?.reply({content: `Setted to ${day}`, ephemeral: true}).catch(()=>{});
     }
 }
