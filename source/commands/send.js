@@ -21,5 +21,6 @@ module.exports = {
             const messagecon = await interaction.options.getString('message');
             await channel.send(messagecon);
             await interaction?.reply({content: `Message sent in ${channel}!`, ephemeral: true}).catch(()=>{});
+            
     }
 }
