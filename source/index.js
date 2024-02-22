@@ -1,5 +1,4 @@
 const { Client, IntentsBitField, Collection, Guild, GatewayIntentBits } = require('discord.js');
-//const { RegisterClientCommands } = require('./register-commands')
 const fs = require('fs');
 const { primarycronstart } = require('./cron-times');
 
@@ -24,7 +23,6 @@ const commandFiles = fs.readdirSync("./source/commands").filter(file => file.end
 
 client.on('ready', (c) =>{
     primarycronstart(client);
-    //RegisterClientCommands(client);
     console.log(`${c.user.tag} is online`);
 });
 
