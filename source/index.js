@@ -1,23 +1,30 @@
-require('dotenv').config();
-const { Client, IntentsBitField, Collection, Guild,  } = require('discord.js');
+const { Client, IntentsBitField, Collection, Guild, GatewayIntentBits } = require('discord.js');
+//const { RegisterClientCommands } = require('./register-commands')
+const fs = require('fs');
 const { primarycronstart } = require('./cron-times');
-const { RegisterClientCommands } = require('./register-commands')
 
-const client = new Client({
- intents: [
-    IntentsBitField.Flags.Guilds,
-    IntentsBitField.Flags.GuildMembers,
-    IntentsBitField.Flags.GuildMessages,
-    IntentsBitField.Flags.MessageContent,
-    IntentsBitField.Flags.GuildScheduledEvents,
- ]
-});
+const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent] }); 
 
-client.commands = new Collection()
+client.commands = new Collection();
+
+require('dotenv').config();
+
+const functions = fs.readdirSync("./source/functions").filter(file => file.endsWith(".js"));
+const eventFiles = fs.readdirSync("./source/events").filter(file => file.endsWith(".js"));
+const commandFiles = fs.readdirSync("./source/commands").filter(file => file.endsWith(".js"));
+
+(async () => {
+    for (file of functions) {
+        require(`./functions/${file}`)(client);
+    }
+    client.handleEvents(eventFiles, "./source/events");
+    client.handleCommands(commandFiles, "./source/commands");
+    client.login(process.env.TOKEN)
+})();
 
 client.on('ready', (c) =>{
     primarycronstart(client);
-    RegisterClientCommands(client);
+    //RegisterClientCommands(client);
     console.log(`${c.user.tag} is online`);
 });
 
@@ -40,5 +47,3 @@ client.on('messageCreate', (message) => {
         console.log(message.author.displayName + ': ' + message.content);
     }
 });
-
-client.login(process.env.TOKEN);

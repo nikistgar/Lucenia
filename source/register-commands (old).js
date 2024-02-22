@@ -1,5 +1,5 @@
 require('dotenv').config();
-const { REST, Routes, SlashCommandBuilder, PermissionFlagsBits, InteractionType } = require('discord.js');
+const { REST, Routes, SlashCommandBuilder, PermissionFlagsBits, client, InteractionType } = require('discord.js');
 
 async function RegisterClientCommands(client) {
 	const { REST } = require('@discordjs/rest')
