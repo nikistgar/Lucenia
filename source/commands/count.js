@@ -18,6 +18,6 @@ module.exports = {
             }
             return `Количество участников с ролью ${roleName}: ${role.members.size}`;
           }
-          await interaction?.reply({content: `${getRoleCount(roleName)}`, ephemeral: true}).catch(()=>{});
+          await interaction?.reply({content: `${getRoleCount(roleName)}`, ephemeral: false}).catch(()=>{});
     }
 }
