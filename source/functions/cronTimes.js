@@ -3,10 +3,10 @@ const CronJob = require('cron').CronJob;
 
 const { mondayembed, mondaypng, tuesdayembed, tuesdaypng,
         wednesdayembed, wednesdaypng, thursdayembed, thursdaypng,
-        fridayembed, fridaypng, kachembed, kachpng} = require('./messages')
+        fridayembed, fridaypng, kachembed, kachpng} = require('../messages')
 
-async function primarycronstart (client)
-{
+module.exports = (client) => {
+    client.cronTimes = async (eventFiles, path) => {
     console.log('Cron detected');
     const monday = new CronJob ('0 0 0/1 * * 1', async function(monday) {
         await client.channels.cache.get(process.env.SC_SCHEDULE_CHANNEL).messages.fetch(process.env.SC_SCHEDULE_MESSAGE)
@@ -58,6 +58,4 @@ async function primarycronstart (client)
             "Europe/Moscow");
     
     console.log('Cron started')
-}
-
-module.exports = { primarycronstart };
+}}
