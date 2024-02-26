@@ -19,6 +19,6 @@ const commandFiles = fs.readdirSync("./source/commands").filter(file => file.end
     }
     client.handleEvents(eventFiles, "./source/events");
     client.handleCommands(commandFiles, "./source/commands");
-    client.cronTimes();
+    client.cronTimes(client);
     client.login(process.env.TOKEN)
 })();
