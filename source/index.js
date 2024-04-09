@@ -11,8 +11,6 @@ const functions = fs.readdirSync("./source/functions").filter(file => file.endsW
 const eventFiles = fs.readdirSync("./source/events").filter(file => file.endsWith(".js"));
 const commandFiles = fs.readdirSync("./source/commands").filter(file => file.endsWith(".js"));
 
-
-
 (async () => {
     for (file of functions) {
         require(`./functions/${file}`)(client);
