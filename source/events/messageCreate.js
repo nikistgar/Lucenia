@@ -11,8 +11,12 @@ module.exports = {
             if (message.attachments.size == 0)
             {
                 message.delete();
+                console.log(message.author.displayName + ': ' + message.content + " (was in img channel, deleted)");
             }
-            console.log(message.author.displayName + ': ' + message.content + " (was in img channel, deleted)");
+            else
+            {
+                console.log(message.author.displayName + ': ' + message.content);
+            }
         }
         else
         {
