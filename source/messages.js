@@ -63,6 +63,9 @@ const fridayembed = new EmbedBuilder()
 	.setTitle('Пятница')
 	.setImage('attachment://friday.png');
 
+const duelembed = new EmbedBuilder()
+    .setTitle('Дуэль')
+
 const day1button = new ButtonBuilder()
     .setCustomId('day1')
     .setLabel('Day 1')
@@ -93,15 +96,24 @@ const schedulebutton = new ButtonBuilder()
     .setLabel('Schedule')
     .setStyle(ButtonStyle.Success);
 
+const duelbutton = new ButtonBuilder()
+    .setCustomId('duel')
+    .setLabel('Принять')
+    .setStyle(ButtonStyle.Success);
+
 const gymschedule = new ActionRowBuilder()
     .addComponents(day1button, day2button, day3button, day4button, daycbutton);
 
 const gymschedule2 = new ActionRowBuilder()
     .addComponents(schedulebutton);
 
+const duel = new ActionRowBuilder()
+    .addComponents(duelbutton);
+
 module.exports = { schedulepng, day1png, day2png, day3png, day4png, daycpng,
                    scheduleembed, day1embed, day2embed, day3embed, day4embed,
                    daycembed, day1button, day2button, day3button, day4button, daycbutton,
                    gymschedule, gymschedule2, kachembed, kachpng, schedulebutton,
                    mondayembed, mondaypng, tuesdayembed, tuesdaypng, wednesdayembed,
-                   wednesdaypng, thursdayembed, thursdaypng, fridayembed, fridaypng };
+                   wednesdaypng, thursdayembed, thursdaypng, fridayembed, fridaypng,
+                   duelbutton, duelembed, duel };
