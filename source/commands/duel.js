@@ -5,7 +5,7 @@ const fs = require('fs');
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('duel')
-		.setDescription('duel')
+		.setDescription('Вызвать на дуэль/Вызов самого себя ролит число до 100')
         .addUserOption(option =>
             option
                 .setName('opponent')

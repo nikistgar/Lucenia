@@ -3,7 +3,7 @@ const { SlashCommandBuilder, PermissionFlagsBits} = require('discord.js');
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('send')
-		.setDescription('1')
+		.setDescription('Отправляет сообщение от имени бота (Админ)')
         .addChannelOption(option =>
 			option
 				.setName('channel')
