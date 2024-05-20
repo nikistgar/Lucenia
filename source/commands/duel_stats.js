@@ -4,7 +4,7 @@ const fs = require('fs');
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('duel_stats')
-		.setDescription('2')
+		.setDescription('Статистика дуэлей')
         .addUserOption(option =>
 			option
 				.setName('user')
