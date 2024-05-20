@@ -3,7 +3,7 @@ const { SlashCommandBuilder } = require("discord.js");
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('count')
-		.setDescription('count')
+		.setDescription('Показывает количество участников с определённой ролью')
         .addRoleOption(option =>
             option
                 .setName('role')

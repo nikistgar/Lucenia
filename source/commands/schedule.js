@@ -8,7 +8,7 @@ const { mondayembed, mondaypng,
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('schedule')
-		.setDescription('schedule')
+		.setDescription('Расписание')
         .addStringOption(option =>
             option
                 .setName('day')

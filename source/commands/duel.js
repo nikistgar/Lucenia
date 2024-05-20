@@ -9,7 +9,7 @@ module.exports = {
         .addUserOption(option =>
             option
                 .setName('opponent')
-                .setDescription('opponent')
+                .setDescription('Противник')
                 .setRequired(true)),
 	async execute(interaction, client) {
         const opponent = await interaction.options.getUser('opponent');

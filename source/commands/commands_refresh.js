@@ -3,7 +3,7 @@ const { SlashCommandBuilder, PermissionFlagsBits} = require('discord.js');
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('commands_refresh')
-		.setDescription('Refreshes commands')
+		.setDescription('Перезагружает команды бота (Не используется)')
         .setDefaultMemberPermissions(PermissionFlagsBits.Administrator)
 		.setDMPermission(false),
 	async execute(interaction, exports, client, InteractionType) {  

@@ -7,12 +7,12 @@ module.exports = {
         .addChannelOption(option =>
 			option
 				.setName('channel')
-				.setDescription('channel')
+				.setDescription('Канал для отправки')
 				.setRequired(true))
         .addStringOption(option =>
             option
                 .setName('message')
-                .setDescription('message')
+                .setDescription('Сообщение')
                 .setRequired(true))
         .setDefaultMemberPermissions(PermissionFlagsBits.Administrator)
 		.setDMPermission(false),

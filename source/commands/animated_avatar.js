@@ -3,9 +3,9 @@ const { SlashCommandBuilder, EmbedBuilder, PermissionFlagsBits} = require('disco
 module.exports = {
     data: new SlashCommandBuilder()
         .setName("animated_avatar")
-        .setDescription('Animate an avatar for your bot')
+        .setDescription(`Подставляет gif в аватар бота`)
         .setDefaultMemberPermissions(PermissionFlagsBits.Owner)
-        .addAttachmentOption(option => option.setName("avatar").setDescription("The avatar to animate").setRequired(true)),
+        .addAttachmentOption(option => option.setName("avatar").setDescription("Выбор аватарки").setRequired(true)),
     async execute (interaction, client) {
 
         const { options } = interaction;
@@ -30,7 +30,7 @@ module.exports = {
         }); 
 
         if (error) return;
-        await interaction?.reply({content: `Commands refreshed`, ephemeral: true}).catch(()=>{});
+        await interaction?.reply({content: `???`, ephemeral: true}).catch(()=>{});
         await sendMessage(`I have uploaded your avatar`)
     }
 }
