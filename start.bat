@@ -1,1 +1,1 @@
-start nodemon
+start nodemon -e "js, mjs, cjs"

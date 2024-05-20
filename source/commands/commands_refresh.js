@@ -7,7 +7,7 @@ module.exports = {
         .setDefaultMemberPermissions(PermissionFlagsBits.Administrator)
 		.setDMPermission(false),
 	async execute(interaction, exports, client, InteractionType) {  
-        const { REST } = require('@discordjs/rest')
+        /*const { REST } = require('@discordjs/rest')
         const { Routes } = require('discord-api-types/v10')
         const fs = require('fs')
         
@@ -30,7 +30,7 @@ module.exports = {
         await rest.put(
             Routes.applicationCommands(process.env.CLIENT_ID),
             { body: commands },
-        )
+        )*/
         await interaction?.reply({content: `Commands refreshed`, ephemeral: true}).catch(()=>{});
         console.log('Commands refreshed')
     }
