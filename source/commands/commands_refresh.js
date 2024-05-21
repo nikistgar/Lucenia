@@ -8,7 +8,7 @@ module.exports = {
 	async execute(interaction, exports, client, InteractionType) {
         if (interaction.user.id != process.env.OWNER_ID)
             {
-                return interaction.reply("Команда только для разработчиков")
+                return interaction.reply({content: "Команда только для разработчиков", ephemaral: true})
             }  
         /*const { REST } = require('@discordjs/rest')
         const { Routes } = require('discord-api-types/v10')

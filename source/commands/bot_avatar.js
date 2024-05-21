@@ -3,12 +3,12 @@ const { SlashCommandBuilder, EmbedBuilder, PermissionFlagsBits} = require('disco
 module.exports = {
     data: new SlashCommandBuilder()
         .setName("bot_avatar")
-        .setDescription(`Меняет аватар бота`)
+        .setDescription(`Меняет аватар бота (dev)`)
         .addAttachmentOption(option => option.setName("avatar").setDescription("Выбор аватарки").setRequired(true)),
     async execute (interaction, client) { 
         if (interaction.user.id != process.env.OWNER_ID)
             {
-                return interaction.reply("Команда только для разработчиков")
+                return interaction.reply({content: "Команда только для разработчиков", ephemaral: true})
             }
 
         const { options } = interaction;

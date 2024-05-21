@@ -8,7 +8,7 @@ const { mondayembed, mondaypng,
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('schedule')
-		.setDescription('Расписание')
+		.setDescription('Расписание (dev)')
         .addStringOption(option =>
             option
                 .setName('day')
@@ -25,7 +25,7 @@ module.exports = {
     async execute(interaction, client) {
         if (interaction.user.id != process.env.OWNER_ID)
             {
-                return interaction.reply("Команда только для разработчиков")
+                return interaction.reply({content: "Команда только для разработчиков", ephemaral: true})
             }
         const day = await interaction.options.getString('day');
         await client.channels.cache.get(process.env.SC_SCHEDULE_CHANNEL).messages.fetch(process.env.SC_SCHEDULE_MESSAGE)

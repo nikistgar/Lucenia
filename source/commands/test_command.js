@@ -3,7 +3,7 @@ const { SlashCommandBuilder, PermissionFlagsBits} = require('discord.js');
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('test_command')
-		.setDescription('Что-то делает')
+		.setDescription('Что-то делает (dev)')
         .addStringOption(option =>
             option
                 .setName('message')
@@ -14,8 +14,8 @@ module.exports = {
 	async execute(interaction, client) {
         if (interaction.user.id != process.env.OWNER_ID)
             {
-                return interaction.reply("Команда только для разработчиков")
+                return interaction.reply({content: "Команда только для разработчиков", ephemaral: true})
             }
-            
+        interaction.reply({content: "Работает", ephemeral: true})
     }
 }
