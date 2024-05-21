@@ -32,34 +32,34 @@ module.exports = {
             switch(r)
             {
                 case 0:
-                    channel.send(`${winner} ультует в ${loser}, побеждая в замесе`)
+                    channel.send(`${loser} получил окороком по лицу от ${winner}, ${winner} победил`)
                     break
                 case 1:
                     channel.send(`${loser} кидает хук в ${winner}, но промахивается, победа за ${winner}`)
                     break
                 case 2:
-                    channel.send(`${winner} разрядил обойму с КАЛАК-12 в ${loser}, ${loser} не выжил`)
+                    channel.send(`${loser} споткнулся об арбуз ${winner}, ${winner} одержал верх`)
                     break
                 case 3:
                     channel.send(`${winner} ультует в ${loser}, побеждая в замесе`)
                     break
                 case 4:
-                    channel.send(`${loser} кидает хук в ${winner}, но промахивается, победа за ${winner}`)
+                    channel.send(`${loser} не смог прийти на дуэль, победа за ${winner}`)
                     break
                 case 5:
-                    channel.send(`${winner} разрядил обойму с КАЛАК-12 в ${loser}, ${loser} не выжил`)
+                    channel.send(`${loser} сделал неудачное сальто, в этот раз ${winner} повезло`)
                     break
                 case 6:
-                    channel.send(`${loser} кидает хук в ${winner}, но промахивается, победа за ${winner}`)
+                    channel.send(`${winner} разрезал ${loser} пополам, победа ${winner}`)
                     break
                 case 7:
-                    channel.send(`${winner} ультует в ${loser}, побеждая в замесе`)
+                    channel.send(`${winner} вместо дуэли скинул ядерку на ${loser}, не везёт`)
                     break
                 case 8:
                     channel.send(`${winner} разрядил обойму с КАЛАК-12 в ${loser}, ${loser} не выжил`)
                     break
                 case 9:
-                    channel.send(`${winner} ультует в ${loser}, побеждая в замесе`)
+                    channel.send(`${winner} подул на ${loser}, ${loser} решил упасть со скалы`)
                     break
             }
         }
