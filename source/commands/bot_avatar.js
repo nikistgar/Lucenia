@@ -2,11 +2,14 @@ const { SlashCommandBuilder, EmbedBuilder, PermissionFlagsBits} = require('disco
 
 module.exports = {
     data: new SlashCommandBuilder()
-        .setName("animated_avatar")
-        .setDescription(`Подставляет gif в аватар бота`)
-        .setDefaultMemberPermissions(PermissionFlagsBits.Owner)
+        .setName("bot_avatar")
+        .setDescription(`Меняет аватар бота`)
         .addAttachmentOption(option => option.setName("avatar").setDescription("Выбор аватарки").setRequired(true)),
-    async execute (interaction, client) {
+    async execute (interaction, client) { 
+        if (interaction.user.id != process.env.OWNER_ID)
+            {
+                return interaction.reply("Команда только для разработчиков")
+            }
 
         const { options } = interaction;
         const avatar = options.getAttachment('avatar')

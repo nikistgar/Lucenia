@@ -21,9 +21,12 @@ module.exports = {
                     { name: 'thursday', value: 'thursday' },
                     { name: 'friday', value: 'friday' },
                 ))
-        .setDefaultMemberPermissions(PermissionFlagsBits.Administrator)
 		.setDMPermission(false),
-    async execute(interaction, client) {  
+    async execute(interaction, client) {
+        if (interaction.user.id != process.env.OWNER_ID)
+            {
+                return interaction.reply("Команда только для разработчиков")
+            }
         const day = await interaction.options.getString('day');
         await client.channels.cache.get(process.env.SC_SCHEDULE_CHANNEL).messages.fetch(process.env.SC_SCHEDULE_MESSAGE)
         .then(message =>{message.edit({ embeds: [eval(day + "embed")], files: [eval(day + "png")] })});

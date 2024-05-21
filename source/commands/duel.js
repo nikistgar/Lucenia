@@ -10,7 +10,8 @@ module.exports = {
             option
                 .setName('opponent')
                 .setDescription('Противник')
-                .setRequired(true)),
+                .setRequired(true))
+        .setDMPermission(false),
 	async execute(interaction, client) {
         const opponent = await interaction.options.getUser('opponent');
         const user = interaction?.member?.user;

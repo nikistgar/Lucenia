@@ -6,7 +6,8 @@ const { SlashCommandBuilder, ComponentType } = require('discord.js');
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('gym')
-		.setDescription('Расписание качалки'),
+		.setDescription('Расписание качалки')
+        .setDMPermission(true),
 	async execute(interaction) {
 		const reply = await interaction.reply({ embeds: [scheduleembed], components:[gymschedule, gymschedule2], files: [schedulepng] })
   

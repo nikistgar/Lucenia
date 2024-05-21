@@ -10,7 +10,7 @@ module.exports = {
 				.setName('user')
 				.setDescription('Пользователь')
 				.setRequired(true))
-		.setDMPermission(false),
+		.setDMPermission(true),
 	async execute(interaction, exports, client) {  
             const user = await interaction.options.getUser('user');
             const avatarembed = new EmbedBuilder()

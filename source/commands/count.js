@@ -8,7 +8,8 @@ module.exports = {
             option
                 .setName('role')
                 .setDescription('role')
-                .setRequired(true)),
+                .setRequired(true))
+    .setDMPermission(false),
 	async execute(interaction, client) {
         const role = await interaction.options.getRole('role');
         roleName = role.name;

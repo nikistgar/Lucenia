@@ -4,9 +4,12 @@ module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('commands_refresh')
 		.setDescription('Перезагружает команды бота (Не используется)')
-        .setDefaultMemberPermissions(PermissionFlagsBits.Administrator)
 		.setDMPermission(false),
-	async execute(interaction, exports, client, InteractionType) {  
+	async execute(interaction, exports, client, InteractionType) {
+        if (interaction.user.id != process.env.OWNER_ID)
+            {
+                return interaction.reply("Команда только для разработчиков")
+            }  
         /*const { REST } = require('@discordjs/rest')
         const { Routes } = require('discord-api-types/v10')
         const fs = require('fs')
