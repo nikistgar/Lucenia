@@ -39,7 +39,7 @@ module.exports = {
                     channel.send(`${loser} кидает хук в ${winner}, но промахивается, победа за ${winner}`)
                     break
                 case 2:
-                    channel.send(`${loser} споткнулся об арбуз ${winner}, ${winner} одержал верх`)
+                    channel.send(`${loser} споткнулся об арбуз, ${winner} одержал верх`)
                     break
                 case 3:
                     channel.send(`${winner} ультует в ${loser}, побеждая в замесе`)
@@ -66,7 +66,7 @@ module.exports = {
         }
 
         function duelStats(userID, duelresult) {
-            const reader = fs.readFileSync("duel_data.json", `utf-8`);
+            const reader = fs.readFileSync("users/duel_data.json", `utf-8`);
             let obj = JSON.parse(reader);
             {
                 if(typeof obj.users[userID] == `undefined`)
@@ -95,7 +95,7 @@ module.exports = {
                             }
                     }
             }
-            fs.writeFileSync('duel_data.json', JSON.stringify(obj));
+            fs.writeFileSync('users/duel_data.json', JSON.stringify(obj));
         }
 
         collector.on('collect', async (interaction) => {

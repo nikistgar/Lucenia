@@ -8,7 +8,7 @@ module.exports = {
     async execute (interaction, client) { 
         if (interaction.user.id != process.env.OWNER_ID)
             {
-                return interaction.reply({content: "Команда только для разработчиков", ephemaral: true})
+                return interaction.reply({content: "Команда только для разработчиков", ephemeral: true})
             }
 
         const { options } = interaction;

@@ -18,7 +18,7 @@ module.exports = {
 	async execute(interaction, exports, client) {
         if (interaction.user.id != process.env.OWNER_ID)
             {
-                return interaction.reply({content: "Команда только для разработчиков", ephemaral: true})
+                return interaction.reply({content: "Команда только для разработчиков", ephemeral: true})
             }
         const channel = await interaction.options.getChannel('channel');
         const messagecon = await interaction.options.getString('message');
