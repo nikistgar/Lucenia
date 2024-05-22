@@ -71,9 +71,7 @@ module.exports = {
             {
                 if(typeof obj.users[userID] == `undefined`)
                     {
-                        obj.users[userID] = {}
-                        obj.users[userID].wins = 0;
-                        obj.users[userID].loses = 0;
+                        client.userJsonCheck(interaction.user.id);
                         if(duelresult == `win`)
                             {
                                 obj.users[userID].wins += 1;

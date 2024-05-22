@@ -18,16 +18,7 @@ module.exports = {
                 return interaction.reply({content: "Команда только для разработчиков", ephemeral: true})
             };
 
-        const reader = fs.readFileSync("users/general.json", `utf-8`);
-        let obj = JSON.parse(reader);
-        
-        user = interaction.user;
-
-        obj.users[interaction.user.id] = user
-
-        fs.writeFileSync('users/general.json', JSON.stringify(obj));
-
-        console.log(obj)
+        client.userJsonCheck(interaction.user.id);
 
         interaction.reply({content: "Работает", ephemeral: true});
     }
