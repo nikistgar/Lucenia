@@ -1,11 +1,14 @@
 const { Client, IntentsBitField, Collection, Guild, GatewayIntentBits } = require('discord.js');
 const fs = require('fs');
-const { Player, useMainPlayer } = require('discord-player');
+const { Player, useMainPlayer} = require('discord-player');
+const { BridgeProvider, BridgeSource, SpotifyExtractor, SoundCloudExtractor } = require('@discord-player/extractor');
 const { YandexMusicExtractor } = require("discord-player-yandexmusic");
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent, GatewayIntentBits.GuildMembers, GatewayIntentBits.GuildPresences, GatewayIntentBits.GuildVoiceStates] }); 
 
 //music
+const bridgeProvider = new BridgeProvider(BridgeSource.SoundCloud);
+
 client.player = new Player(client, {
     ytdlOptions: {
         quality: "highestaudio",
@@ -15,8 +18,11 @@ client.player = new Player(client, {
 
 async function loadExtractors(player) {
     client.player.extractors.register(YandexMusicExtractor, { access_token: `${process.env.YANDEX_TOKEN}`, uid: `${process.env.YANDEX_UID}` })
-    await player.extractors.loadDefault((ext) => ext !== 'YouTubeExtractor');
-}
+    await player.extractors.register(SoundCloudExtractor)
+    await player.extractors.register(SpotifyExtractor, {
+        bridgeProvider
+    });
+}   
 
 client.player.events.on('playerStart', (queue, track) => {
     queue.metadata.channel.send(`Started playing **${track.cleanTitle}**!`);
@@ -41,5 +47,3 @@ const commandFiles = fs.readdirSync("./source/commands").filter(file => file.end
     loadExtractors(client.player);
     client.login(process.env.TOKEN)
 })();
-
-//1671825151
