@@ -4,7 +4,7 @@ const { useMainPlayer } = require('discord-player');
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('play')
-		.setDescription('Расписание качалки')
+		.setDescription('Воспроизводит музыку (Ссылка с soundcloud/название)')
         .setDMPermission(true)
         .addStringOption(option =>
             option

@@ -3,14 +3,14 @@ const { useMainPlayer } = require('discord-player');
 
 module.exports = {
 	data: new SlashCommandBuilder()
-		.setName('exit')
-		.setDescription('Бот выйдет из канала')
+		.setName('pause')
+		.setDescription('Пауза музыки')
         .setDMPermission(true),
 	async execute(interaction, client) {
         const queue = client.player.nodes.get(interaction.guild)
 
-        queue.delete();
+        queue.node.pause();
 
-        interaction.reply("Bot left the channel")
+        interaction.reply("skipping...")
     }
 }

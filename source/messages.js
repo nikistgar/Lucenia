@@ -66,6 +66,9 @@ const fridayembed = new EmbedBuilder()
 const duelembed = new EmbedBuilder()
     .setTitle('Дуэль')
 
+const musicembed = new EmbedBuilder()
+    .setTitle('Музыка')
+
 const day1button = new ButtonBuilder()
     .setCustomId('day1')
     .setLabel('Day 1')
@@ -101,6 +104,21 @@ const duelbutton = new ButtonBuilder()
     .setLabel('Принять')
     .setStyle(ButtonStyle.Success);
 
+const pause = new ButtonBuilder()
+    .setCustomId('pause')
+    .setLabel('Стоп')
+    .setStyle(ButtonStyle.Success);
+
+const resume = new ButtonBuilder()
+    .setCustomId('resume')
+    .setLabel('Продолжить')
+    .setStyle(ButtonStyle.Success);
+
+const skip = new ButtonBuilder()
+    .setCustomId('skip')
+    .setLabel('Пропустить')
+    .setStyle(ButtonStyle.Success);
+
 const gymschedule = new ActionRowBuilder()
     .addComponents(day1button, day2button, day3button, day4button, daycbutton);
 
@@ -110,10 +128,13 @@ const gymschedule2 = new ActionRowBuilder()
 const duel = new ActionRowBuilder()
     .addComponents(duelbutton);
 
+const music = new ActionRowBuilder()
+    .addComponents(pause, resume, skip);
+
 module.exports = { schedulepng, day1png, day2png, day3png, day4png, daycpng,
                    scheduleembed, day1embed, day2embed, day3embed, day4embed,
                    daycembed, day1button, day2button, day3button, day4button, daycbutton,
                    gymschedule, gymschedule2, kachembed, kachpng, schedulebutton,
                    mondayembed, mondaypng, tuesdayembed, tuesdaypng, wednesdayembed,
                    wednesdaypng, thursdayembed, thursdaypng, fridayembed, fridaypng,
-                   duelbutton, duelembed, duel };
+                   duelbutton, duelembed, duel, musicembed, music, pause, resume, skip };

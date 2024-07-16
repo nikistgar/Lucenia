@@ -19,7 +19,7 @@ module.exports = {
 
         const reply = await interaction.reply({components:[duel], content: `${user} вызывает на дуэль ${opponent}`})
   
-        const collector = reply.createMessageComponentCollector({
+        const duelcollector = reply.createMessageComponentCollector({
             ComponentType: ComponentType.Button,
         });
 
@@ -96,7 +96,7 @@ module.exports = {
             fs.writeFileSync('users/duel_data.json', JSON.stringify(obj));
         }
 
-        collector.on('collect', async (interaction) => {
+        duelcollector.on('collect', async (interaction) => {
             await interaction.deferUpdate();
             if (interaction.member.user == opponent){
                 reply.delete()

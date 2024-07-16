@@ -4,7 +4,7 @@ const { useMainPlayer } = require('discord-player');
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('skip')
-		.setDescription('Расписание качалки')
+		.setDescription('Скипает трек')
         .setDMPermission(true),
 	async execute(interaction, client) {
         const queue = client.player.nodes.get(interaction.guild)

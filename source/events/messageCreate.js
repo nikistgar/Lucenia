@@ -22,28 +22,11 @@ module.exports = {
         {
             console.log(message.author.displayName + ': ' + message.content);
         }
-        /*if (message.author.id === '418792454922305557')
-        {
-            if (message.content.includes('размут'))
-            {
-                message.delete();
-                return;
-            }
-            if (message.content.includes('раз'))
-            {
-                message.delete();
-                return;
-            }
-            if (message.content.includes('мут'))
-            {
-                message.delete();
-                return;
-            }
+
             if (message.content.includes('<@422829728681033739>'))
             {
                 message.delete();
                 return;
             }
-        }*/
     },
 };
