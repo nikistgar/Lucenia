@@ -1,8 +1,8 @@
-const { Player, useMainPlayer} = require('discord-player');
-const { BridgeProvider, BridgeSource, SpotifyExtractor, SoundCloudExtractor } = require('@discord-player/extractor');
-const { YandexMusicExtractor } = require("discord-player-yandexmusic");
+const { Player } = require('discord-player');
+const { BridgeProvider, BridgeSource, SpotifyExtractor, SoundCloudExtractor, YoutubeExtractor } = require('@discord-player/extractor');
+//const { YandexMusicExtractor } = require("discord-player-yandexmusic");
 const { music } = require(process.env.RESOURCE_PATH + '/source/messages')
-const { SlashCommandBuilder, ComponentType } = require('discord.js');
+const { ComponentType } = require('discord.js');
 
 require('dotenv').config();
 module.exports = (client) => {
@@ -17,14 +17,23 @@ module.exports = (client) => {
         });
 
 
-        client.player.extractors.register(YandexMusicExtractor, { access_token: `${process.env.YANDEX_TOKEN}`, uid: `${process.env.YANDEX_UID}` })
+        //client.player.extractors.register(YandexMusicExtractor, { access_token: `${process.env.YANDEX_TOKEN}`, uid: `${process.env.YANDEX_UID}` })
+        //await client.player.extractors.register(SpotifyExtractor)
         await client.player.extractors.register(SoundCloudExtractor)
-        await client.player.extractors.register(SpotifyExtractor, {
+        /*await client.player.extractors.register(SpotifyExtractor, {
             bridgeProvider
-        });
+        });*/
+
+        var sendmusic = 1;
 
         client.player.events.on('playerStart', async (queue, track) => {
-            const sendmusic = await queue.metadata.channel.send({components: [music], content: `Started playing **${track.cleanTitle}**!`});
+
+            if (sendmusic !== 1)
+                {
+                    sendmusic.delete();
+                }
+
+            sendmusic = await queue.metadata.channel.send({components: [music], content: `Started playing **${track.cleanTitle}**!`});
 
             const collector = sendmusic.createMessageComponentCollector({
                 ComponentType: ComponentType.Button,

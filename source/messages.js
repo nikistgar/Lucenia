@@ -106,17 +106,17 @@ const duelbutton = new ButtonBuilder()
 
 const pause = new ButtonBuilder()
     .setCustomId('pause')
-    .setLabel('Стоп')
+    .setLabel('⏸︎')
     .setStyle(ButtonStyle.Success);
 
 const resume = new ButtonBuilder()
     .setCustomId('resume')
-    .setLabel('Продолжить')
+    .setLabel('⏵︎')
     .setStyle(ButtonStyle.Success);
 
 const skip = new ButtonBuilder()
     .setCustomId('skip')
-    .setLabel('Пропустить')
+    .setLabel('⏭︎')
     .setStyle(ButtonStyle.Success);
 
 const gymschedule = new ActionRowBuilder()
