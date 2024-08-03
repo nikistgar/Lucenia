@@ -1,11 +1,11 @@
-const { SlashCommandBuilder, PermissionFlagsBits} = require('discord.js');
+const { SlashCommandBuilder } = require('discord.js');
 
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('commands_refresh')
 		.setDescription('Перезагружает команды бота (Не используется)')
 		.setDMPermission(false),
-	async execute(interaction, exports, client, InteractionType) {
+	async execute(interaction ) {
         if (interaction.user.id != process.env.OWNER_ID)
             {
                 return interaction.reply({content: "Команда только для разработчиков", ephemeral: true})

@@ -10,7 +10,7 @@ module.exports = {
                 .setDescription('role')
                 .setRequired(true))
     .setDMPermission(false),
-	async execute(interaction, client) {
+	async execute(interaction ) {
         const role = await interaction.options.getRole('role');
         roleName = role.name;
         function getRoleCount(roleName) {

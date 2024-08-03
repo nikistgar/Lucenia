@@ -1,4 +1,4 @@
-const { Client, IntentsBitField, Collection, Guild, GatewayIntentBits } = require('discord.js');
+const { Client, Collection, GatewayIntentBits } = require('discord.js');
 const fs = require('fs');
 
 require('dotenv').config();

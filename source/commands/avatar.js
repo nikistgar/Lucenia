@@ -1,4 +1,4 @@
-const { SlashCommandBuilder, EmbedBuilder, PermissionFlagsBits} = require('discord.js');
+const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
 const { avatarembed } = require(process.env.RESOURCE_PATH + '/source/messages')
 
 module.exports = {
@@ -11,7 +11,7 @@ module.exports = {
 				.setDescription('Пользователь')
 				.setRequired(true))
 		.setDMPermission(true),
-	async execute(interaction, exports, client) {  
+	async execute(interaction ) {  
             const user = await interaction.options.getUser('user');
             const avatarembed = new EmbedBuilder()
                 .setTitle(`Аватар ${user.tag}`)

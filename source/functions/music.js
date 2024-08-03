@@ -22,6 +22,9 @@ module.exports = (client) => {
         await client.player.extractors.register(SoundCloudExtractor)
         /*await client.player.extractors.register(SpotifyExtractor, {
             bridgeProvider
+        });
+        await client.player.extractors.register(YoutubeExtractor, {
+            bridgeProvider
         });*/
 
         var sendmusic = 1;

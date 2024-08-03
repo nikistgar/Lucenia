@@ -1,6 +1,3 @@
-const { Interaction } = require("discord.js");
-const { useQueue } = require("discord-player");
-
 module.exports = {
     name: 'interactionCreate',
     async execute(interaction, client) {
@@ -9,8 +6,6 @@ module.exports = {
         const command = client.commands.get(interaction.commandName);
 
         if (!command) return
-
-        //const queue = useQueue(interaction.guildId);
         
         try{
             await command.execute(interaction, client);

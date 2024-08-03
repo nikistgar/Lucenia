@@ -1,4 +1,4 @@
-const { SlashCommandBuilder, ComponentType } = require('discord.js');
+const { SlashCommandBuilder } = require('discord.js');
 const { useMainPlayer } = require('discord-player');
 
 module.exports = {
@@ -11,7 +11,7 @@ module.exports = {
                 .setName('query')
                 .setDescription('музыка')
                 .setRequired(true)),
-	async execute(interaction, client ) {
+	async execute(interaction) {
 		const player = useMainPlayer();
         const channel = interaction.member.voice.channel;
         if (!channel) return interaction.reply({content: 'You are not connected to a voice channel!', ephemeral: true});
