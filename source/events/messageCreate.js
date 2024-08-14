@@ -23,10 +23,10 @@ module.exports = {
             console.log(message.author.displayName + ': ' + message.content);
         }
 
-            if (message.content.includes('<@422829728681033739>'))
+            /*if (message.content.includes('<@422829728681033739>'))
             {
                 message.delete();
                 return;
-            }
+            }*/
     },
 };

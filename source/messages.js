@@ -119,6 +119,11 @@ const skip = new ButtonBuilder()
     .setLabel('⏭︎')
     .setStyle(ButtonStyle.Success);
 
+const repeat = new ButtonBuilder()
+    .setCustomId('repeat')
+    .setLabel('∞')
+    .setStyle(ButtonStyle.Success);
+
 const gymschedule = new ActionRowBuilder()
     .addComponents(day1button, day2button, day3button, day4button, daycbutton);
 
@@ -129,7 +134,7 @@ const duel = new ActionRowBuilder()
     .addComponents(duelbutton);
 
 const music = new ActionRowBuilder()
-    .addComponents(pause, resume, skip);
+    .addComponents(pause, resume, skip, repeat);
 
 module.exports = { schedulepng, day1png, day2png, day3png, day4png, daycpng,
                    scheduleembed, day1embed, day2embed, day3embed, day4embed,

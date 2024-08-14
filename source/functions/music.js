@@ -1,8 +1,10 @@
-const { Player } = require('discord-player');
+const { Player, QueueRepeatMode } = require('discord-player');
 const { BridgeProvider, BridgeSource, SpotifyExtractor, SoundCloudExtractor, YoutubeExtractor } = require('@discord-player/extractor');
 //const { YandexMusicExtractor } = require("discord-player-yandexmusic");
 const { music } = require(process.env.RESOURCE_PATH + '/source/messages')
 const { ComponentType } = require('discord.js');
+
+
 
 require('dotenv').config();
 module.exports = (client) => {
@@ -16,6 +18,7 @@ module.exports = (client) => {
             }
         });
 
+        let RepeatStatus = "Повторение выключено";
 
         //client.player.extractors.register(YandexMusicExtractor, { access_token: `${process.env.YANDEX_TOKEN}`, uid: `${process.env.YANDEX_UID}` })
         //await client.player.extractors.register(SpotifyExtractor)
@@ -56,7 +59,21 @@ module.exports = (client) => {
                 {
                     queue.node.skip();
                 }
+                else if (interaction.customId == `repeat` & (RepeatStatus == "Повторение выключено"|RepeatStatus == "Повторение очереди"))
+                {
+                    queue.setRepeatMode(QueueRepeatMode.TRACK);
+                    interaction?.followUp("Повторение трека включено");
+                    RepeatStatus = "Повторение трека";
+                }
+                else if (interaction.customId == `repeat` & (RepeatStatus == "Повторение трека"|RepeatStatus == "Повторение очереди"))
+                {
+                    queue.setRepeatMode(QueueRepeatMode.OFF);
+                    interaction?.followUp("Повторение трека выключено");
+                    RepeatStatus = "Повторение выключено";
+                }
             })
             });
         };
     }
+
+

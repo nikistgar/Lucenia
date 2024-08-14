@@ -11,7 +11,7 @@ module.exports = {
 				.setDescription('user')
 				.setRequired(true))
 		.setDMPermission(true),
-	async execute(interaction ) {  
+	async execute(interaction) {  
         const userID = await interaction.options.getUser('user').id;
         const reader = fs.readFileSync("users/duel_data.json", `utf-8`);
         let obj = JSON.parse(reader);
