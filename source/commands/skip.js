@@ -8,8 +8,14 @@ module.exports = {
 	async execute(interaction, client) {
         const queue = client.player.nodes.get(interaction.guild)
 
-        queue.node.skip();
-
-        interaction.reply("skipping...")
+        if (queue != null)
+        {
+            queue.node.skip();
+            interaction.reply("skipping...")
+        }
+        else
+        {
+            interaction.reply('В очереди нет треков')
+        }
     }
 }

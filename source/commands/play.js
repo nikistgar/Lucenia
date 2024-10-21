@@ -14,7 +14,7 @@ module.exports = {
 	async execute(interaction) {
 		const player = useMainPlayer();
         const channel = interaction.member.voice.channel;
-        if (!channel) return interaction.reply({content: 'You are not connected to a voice channel!', ephemeral: true});
+        if (!channel) return interaction.reply({content: 'Вы не в голосовом канале!', ephemeral: true});
         const query = interaction.options.getString('query', true);
 
         await interaction.deferReply();
@@ -30,7 +30,7 @@ module.exports = {
                 }
             });
 
-            return interaction.followUp(`**${track.cleanTitle}** enqueued!`);
+            return interaction.followUp(`**${track.cleanTitle}** Добавлено в очередь!`);
         } catch (e) {
             return interaction.followUp({content: `Something went wrong: ${e}`, ephemeral: true});
         }

@@ -10,6 +10,6 @@ module.exports = {
 
         queue.node.pause();
 
-        interaction.reply("skipping...")
+        interaction.reply("Поставлено на паузу")
     }
 }

@@ -21,8 +21,8 @@ module.exports = (client) => {
         let RepeatStatus = "Повторение выключено";
 
         //client.player.extractors.register(YandexMusicExtractor, { access_token: `${process.env.YANDEX_TOKEN}`, uid: `${process.env.YANDEX_UID}` })
-        //await client.player.extractors.register(SpotifyExtractor)
-        await client.player.extractors.register(SoundCloudExtractor)
+        await client.player.extractors.register(SpotifyExtractor);
+        await client.player.extractors.register(SoundCloudExtractor);
         /*await client.player.extractors.register(SpotifyExtractor, {
             bridgeProvider
         });

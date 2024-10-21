@@ -16,6 +16,8 @@ module.exports = {
         const opponent = await interaction.options.getUser('opponent');
         const user = interaction?.member?.user;
         const channel = interaction?.channel;
+        await client.userJsonCheck(user.id);
+        await client.userJsonCheck(opponent.id);
 
         const reply = await interaction.reply({components:[duel], content: `${user} вызывает на дуэль ${opponent}`})
   
@@ -71,7 +73,6 @@ module.exports = {
             {
                 if(typeof obj.users[userID] == `undefined`)
                     {
-                        client.userJsonCheck(interaction.user.id);
                         if(duelresult == `win`)
                             {
                                 obj.users[userID].wins += 1;

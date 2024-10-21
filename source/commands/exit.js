@@ -10,6 +10,6 @@ module.exports = {
 
         queue.delete();
 
-        interaction.reply("Bot left the channel")
+        interaction.reply("Выхожу из канала")
     }
 }

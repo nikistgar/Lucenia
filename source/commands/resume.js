@@ -10,6 +10,6 @@ module.exports = {
 
         queue.node.resume();
 
-        interaction.reply("skipping...")
+        interaction.reply("Продолжаю проигрывать")
     }
 }

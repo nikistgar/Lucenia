@@ -15,7 +15,7 @@ module.exports = (client) => {
             };
         if(typeof objduel.users[userID] == `undefined`)
             {
-                objduel.users[userID] = {}
+                objduel.users[userID] = {};
                 objduel.users[userID].wins = 0;
                 objduel.users[userID].loses = 0;
 
